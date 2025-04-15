@@ -45,12 +45,3 @@ jobs:
           
           # Push branch
           git push origin ${{ steps.pr_info.outputs.new_branch_name }}
-        
-      - name: Add reaction and comment
-        uses: peter-evans/create-or-update-comment@v4
-        with:
-          comment-id: ${{ github.event.comment.id }}
-          reaction-type: '+1'
-          body: |
-            Perf branch `${{ steps.pr_info.outputs.new_branch_name }}` created and `main` merged into it.
-            You can view it here: ${{ github.server_url }}/${{ github.repository }}/tree/${{ steps.pr_info.outputs.new_branch_name }}
